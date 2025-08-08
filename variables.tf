@@ -1,41 +1,18 @@
-variable "pm_api_url" {
-    description = "Proxmox API URL"
-    type        = string
-}
-
-variable "pm_auth_user" {
-    description = "Proxmox User"
-    type        = string
-}
-
-variable "pm_auth_password" {
-    description = "Proxmox Password"
-    type        = string
-    sensitive   = true
-}
-
-variable "pm_tls_insecure" {
-    description = "Proxmox TLS Validation"
-    type        = bool
-    default     = false
-}
-
-variable "pm_debug" {
-    description = "Proxmox Debug Option"
-    type        = bool
-    default     = false
-}
-
-variable "pm_log_enable" {
-    description = "Proxmox Log Option"
-    type        = bool
-    default     = false
-}
-
-variable "pm_log_file" {
-    description = "Proxmox Log File"
-    type        = string
-    default     = "/tmp/terraform-proxmox.log"
+variable "host" {
+    description    = "Virtualization Host Info"
+    type = object({
+        api_url = string
+        authentication = object({
+            user = string
+            password = string
+        })
+        tls_insecure = bool
+        debug = bool
+        log     = object({
+            enable = bool
+            file = string
+        })
+    })
 }
 
 variable "vm" {

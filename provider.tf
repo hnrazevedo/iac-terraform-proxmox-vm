@@ -8,11 +8,11 @@ terraform {
 }
 
 provider "proxmox" {
-    pm_api_url      = var.pm_api_url
-    pm_user         = var.pm_auth_user
-    pm_password     = var.pm_auth_password
-    pm_tls_insecure = var.pm_tls_insecure
-    pm_debug        = var.pm_debug
-    pm_log_enable   = var.pm_log_enable
-    pm_log_file     = var.pm_log_file
+    pm_api_url      = var.host.api_url
+    pm_user         = var.host.authentication.user
+    pm_password     = var.host.authentication.password
+    pm_tls_insecure = var.host.tls_insecure
+    pm_debug        = var.host.debug
+    pm_log_enable   = var.host.log.enable
+    pm_log_file     = var.host.log.file
 }
